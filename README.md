@@ -25,3 +25,4 @@ To reinstall headshot please follow the instructions on the headshot website. (h
 
 You can contact me at boss.#7181 on discord if you have any issues or suggestions.
 This program is **not** made by any headshot.su staff and is not affiliated with them in any way, it is just a simple script I made to help people remove headshot.su from their pc. Please do not open headshot tickets for help.
+The full script is made in golang if anyone wanted to know.
