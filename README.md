@@ -1,7 +1,7 @@
 # HeadshotHider
 
 HeadshotHider is a simple script that upon running will delete almost all files relating to headshot.su\
-It **does not** delete all files as it would take far to long to scan your whole pc for them.\
+It **does not** delete all files as it would take far too long to scan your whole pc for them.\
 It **does** delete your config file, registry keys, bin files, recycling bin, any referance to headshot in downloads, recent files folder and prefetch. \
 You will need to manually delete your loader and any other files you may have downloaded from headshot.su not listed above. This includes browser history, I may add this in the future but for now you will need to do this manually.\
 Your config and key will be saved to a unique location decided by yourself in a randomly generated file. Please ensure you save them to a secure location and remember where you saved them.
