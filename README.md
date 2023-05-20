@@ -12,7 +12,7 @@
 
 ## Introduction
 
-HeadshotHider deletes almost all files and data pervading to https://headshot.su/.
+HeadshotHider deletes almost all files and data pervading to https://headshot.su/.__
 If you like the project leave it a star :)
 
 ## Features 
@@ -28,7 +28,7 @@ If you like the project leave it a star :)
 - Clear registry process history
 - Delete & copy your headshot key
 - Delete run history
-- Delete windows defender history
+- Delete windows defender history__
 *Note: Browser history deletion is a 50/50 due to windows issues*
 
 ## Getting Started
@@ -52,6 +52,6 @@ most recent version. Launch the application and give it admin and have fun!
 
 ## Contributors
 
-https://github.com/bosslawl/
-https://github.com/Athenua
+https://github.com/bosslawl/ __
+https://github.com/Athenua __
 Others that don't have github...
