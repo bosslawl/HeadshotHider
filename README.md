@@ -40,7 +40,7 @@ most recent version. Launch the application and give it admin and have fun!
 
 - Is this a rat?
 
-    yes
+    yes (sarcasm)
 
 - Can I get support from https://headshot.su/ staff?
 
@@ -54,5 +54,5 @@ most recent version. Launch the application and give it admin and have fun!
 
 https://github.com/bosslawl/ \
 https://github.com/Athenua/ \
-1557
+1557 \
 2007
