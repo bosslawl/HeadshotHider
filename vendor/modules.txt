@@ -1,8 +1,0 @@
-# github.com/google/uuid v1.3.0
-## explicit
-github.com/google/uuid
-# golang.org/x/sys v0.7.0
-## explicit; go 1.17
-golang.org/x/sys/internal/unsafeheader
-golang.org/x/sys/windows
-golang.org/x/sys/windows/registry
