@@ -53,5 +53,6 @@ most recent version. Launch the application and give it admin and have fun!
 ## Contributors
 
 https://github.com/bosslawl/ \
-https://github.com/Athenua \
-Others that don't have github...
+https://github.com/Athenua/ \
+1557
+2007
