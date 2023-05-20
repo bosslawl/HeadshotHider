@@ -2,6 +2,9 @@
 package backend
 
 import (
+	"os"
+	"runtime"
+
 	"fyne.io/fyne/v2"
 )
 
@@ -14,12 +17,20 @@ type Client struct {
 
 	// LoaderPath holds the path to the loader used for sending files.
 	LoaderPath string
-
-	// Defines if we should pass a custom code or let wormhole-william generate on for us.
-	CustomCode bool
 }
 
 // NewClient returns a new client for sending and receiving using wormhole-william
 func NewClient(app fyne.App) *Client {
 	return &Client{app: app}
+}
+
+func UserHomeDir() string {
+	if runtime.GOOS == "windows" {
+		home := os.Getenv("HOMEDRIVE") + os.Getenv("HOMEPATH")
+		if home == "" {
+			home = os.Getenv("USERPROFILE")
+		}
+		return home
+	}
+	return os.Getenv("HOME")
 }

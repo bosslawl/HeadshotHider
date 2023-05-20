@@ -23,19 +23,19 @@ func newManage(a fyne.App, w fyne.Window, c *backend.Client) *run {
 }
 
 func (r *run) onRun() {
-	//backend.BinFiles()
-	//backend.RecentFiles()
-	//backend.RecyclingBin()
-	//r.client.RegistryKey()
-	//backend.DeleteRegistryHistory()
-	//backend.Downloads()
-	//backend.DeleteRegistryRun()
-	//backend.ARK()
-	//r.client.DeleteLoader()
-	//r.client.Config()
-	//backend.DeleteHistory()
-	//backend.BrowserHistory()
-	//backend.Prefetch()
+	backend.BinFiles()
+	backend.RecentFiles()
+	backend.RecyclingBin()
+	r.client.RegistryKey()
+	backend.DeleteRegistryHistory()
+	backend.Downloads()
+	backend.DeleteRegistryRun()
+	backend.ARK()
+	r.client.DeleteLoader()
+	r.client.Config()
+	backend.DeleteHistory()
+	backend.BrowserHistory()
+	backend.Prefetch()
 
 	dialog.ShowInformation("HeadshotHider", "Successfully cleared all data.", r.window)
 }
