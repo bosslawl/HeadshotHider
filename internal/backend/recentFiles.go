@@ -1,7 +1,10 @@
 package backend
 
 import (
+	"io/ioutil"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 )
@@ -12,16 +15,16 @@ import (
 
 func RecentFiles() error {
 	recent := UserHomeDir() + "\\AppData\\Roaming\\Microsoft\\Windows\\Recent"
-	err := os.RemoveAll(recent)
-	if err != nil {
-		util.Logger.Println("Error deleting recent files:", err)
-		return err
-	}
-	errr := os.Mkdir(recent, 0755)
-	if errr != nil {
-		util.Logger.Println("Error creating recent files:", errr)
-		return errr
-	}
+	files, _ := ioutil.ReadDir(recent)
 
+	for _, file := range files {
+		if strings.Contains(strings.ToLower(file.Name()), "headshot") || strings.Contains(strings.ToLower(file.Name()), "hs") {
+			err := os.Remove(filepath.Join(recent, file.Name()))
+			if err != nil {
+				util.Logger.Println("Error deleting recent files:", err)
+				return err
+			}
+		}
+	}
 	return nil
 }

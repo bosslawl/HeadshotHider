@@ -1,7 +1,10 @@
 package backend
 
 import (
+	"io/ioutil"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 )
@@ -14,17 +17,16 @@ import (
 
 func Prefetch() error {
 	prefetch := "C:\\Windows\\Prefetch"
-	err := os.RemoveAll(prefetch)
-	if err != nil {
-		util.Logger.Println("Error deleting prefetch:", err)
-		return err
-	}
-	
-	errr := os.Mkdir(prefetch, 0755)
-	if errr != nil {
-		util.Logger.Println("Error creating prefetch:", errr)
-		return errr
-	}
+	files, _ := ioutil.ReadDir(prefetch)
 
+	for _, file := range files {
+		if strings.Contains(strings.ToLower(file.Name()), "headshot") || strings.Contains(strings.ToLower(file.Name()), "hs") {
+			err := os.Remove(filepath.Join(prefetch, file.Name()))
+			if err != nil {
+				util.Logger.Println("Error deleting prefetch:", err)
+				return err
+			}
+		}
+	}
 	return nil
 }
