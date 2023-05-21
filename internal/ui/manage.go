@@ -7,6 +7,7 @@ import (
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 	"github.com/bosslawl/HeadshotHider/v2/internal/backend"
+	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 )
 
 type run struct {
@@ -39,72 +40,86 @@ func (r *run) onRun() {
 	d.Show()
 
 	if r.client.Config() != nil {
+		util.Logger.Println(r.client.Config())
 		dialog.ShowError(r.client.Config(), r.window)
 		return
 	}
 	update(progress)
 	if r.client.DeleteLoader() != nil {
+		util.Logger.Println(r.client.DeleteLoader())
 		dialog.ShowError(r.client.DeleteLoader(), r.window)
 		return
 	}
 	update(progress)
 	if backend.BinFiles() != nil {
+		util.Logger.Println(backend.BinFiles())
 		dialog.ShowError(backend.BinFiles(), r.window)
 		return
 	}
 	update(progress)
 	if backend.RecentFiles() != nil {
+		util.Logger.Println(backend.RecentFiles())
 		dialog.ShowError(backend.RecentFiles(), r.window)
 		return
 	}
 	update(progress)
 	if backend.RecyclingBin() != nil {
+		util.Logger.Println(backend.RecyclingBin())
 		dialog.ShowError(backend.RecyclingBin(), r.window)
 		return
 	}
 	update(progress)
 	if r.client.RegistryKey() != nil {
+		util.Logger.Println(r.client.RegistryKey())
 		dialog.ShowError(r.client.RegistryKey(), r.window)
 		return
 	}
 	update(progress)
 	if backend.DeleteRegistryHistory() != nil {
+		util.Logger.Println(backend.DeleteRegistryHistory())
 		dialog.ShowError(backend.DeleteRegistryHistory(), r.window)
 		return
 	}
 	update(progress)
 	if backend.Downloads() != nil {
+		util.Logger.Println(backend.Downloads())
 		dialog.ShowError(backend.Downloads(), r.window)
 		return
 	}
 	update(progress)
 	if backend.DeleteRegistryRun() != nil {
+		util.Logger.Println(backend.DeleteRegistryRun())
 		dialog.ShowError(backend.DeleteRegistryRun(), r.window)
 		return
 	}
 	update(progress)
 	if backend.ARK() != nil {
+		util.Logger.Println(backend.ARK())
 		dialog.ShowError(backend.ARK(), r.window)
 		return
 	}
 	update(progress)
 	if backend.DeleteHistory() != nil {
+		util.Logger.Println(backend.DeleteHistory())
 		dialog.ShowError(backend.DeleteHistory(), r.window)
 		return
 	}
 	update(progress)
 	if backend.BrowserHistory() != nil {
+		util.Logger.Println(backend.BrowserHistory())
 		dialog.ShowError(backend.BrowserHistory(), r.window)
 		return
 	}
 	update(progress)
 	if backend.Prefetch() != nil {
+		util.Logger.Println(backend.Prefetch())
 		dialog.ShowError(backend.Prefetch(), r.window)
 		return
 	}
 	update(progress)
 
 	d.Hide()
+	util.Logger.Println("Successfully cleared all data.")
 	dialog.ShowInformation("HeadshotHider", "Successfully cleared all data.", r.window)
 }
 

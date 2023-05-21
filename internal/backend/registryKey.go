@@ -5,25 +5,29 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 	"github.com/google/uuid"
 	"golang.org/x/sys/windows/registry"
 )
 
-func (c *Client) CopyKey() {
+func (c *Client) CopyKey() error {
 	key, _ := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Headshot`, registry.QUERY_VALUE)
 	value, _, err := key.GetStringValue("Key")
 	if err != nil {
+		util.Logger.Println("Error getting registry key: ", err)
 		panic(err)
 	}
 
 	uuid := uuid.New().String()
 	os.Create(c.DownloadPath + "\\" + uuid + ".txt")
 	ioutil.WriteFile(c.DownloadPath+"\\"+uuid+".txt", []byte(value), 0)
+	return nil
 }
 
-func DeleteTable() {
+func DeleteTable() error {
 	key, _ := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Headshot`, registry.ALL_ACCESS)
 	DeleteRegistryKey(key)
+	return nil
 }
 
 func DeleteRegistryKey(key registry.Key) error {
@@ -63,7 +67,16 @@ func DeleteRegistryKey(key registry.Key) error {
 }
 
 func (c *Client) RegistryKey() error {
-	c.CopyKey()
-	DeleteTable()
+	err := c.CopyKey()
+	if err != nil {
+		util.Logger.Println("Error copying registry key:", err)
+		return err
+	}
+
+	errr := DeleteTable()
+	if errr != nil {
+		util.Logger.Println("Error deleting registry key:", errr)
+		return errr
+	}
 	return nil
 }

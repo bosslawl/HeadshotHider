@@ -2,10 +2,12 @@ package backend
 
 import (
 	"os"
+
+	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 )
 
-/* 
-	Deletes all files in `bin_files` in %temp% 
+/*
+	Deletes all files in `bin_files` in %temp%
 	This is just HSUWPHelper
 */
 
@@ -13,6 +15,10 @@ func BinFiles() error {
 	homeDir := UserHomeDir()
 
 	bin := homeDir + "\\AppData\\Local\\Temp\\bin_files"
-	os.RemoveAll(bin)
+	err := os.RemoveAll(bin)
+	if err != nil {
+		util.Logger.Println("Error deleting bin files:", err)
+		return err
+	}
 	return nil
 }

@@ -19,9 +19,11 @@ import (
 
 	"github.com/bosslawl/HeadshotHider/v2/internal/assets"
 	"github.com/bosslawl/HeadshotHider/v2/internal/ui"
+	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 )
 
 func main() {
+	util.Logger.Println("Starting HeadshotHider...")
 	name, err := os.Executable()
 	if err != nil {
 		panic(err)
@@ -34,9 +36,11 @@ func main() {
 		cmd := exec.Command("cmd", "/C", "start", uuid+".exe")
 		cmd.Run()
 		runMeElevated()
+		util.Logger.Println("Renaming executable and restarting as admin...")
 		return
 	} else if !amAdmin() && exe != "HeadshotHider.exe" {
 		runMeElevated()
+		util.Logger.Println("Restarting as admin...")
 		return
 	}
 
@@ -47,6 +51,7 @@ func main() {
 	w.SetContent(ui.Create(a, w))
 	w.Resize(fyne.NewSize(850, 500))
 	w.SetMaster()
+	util.Logger.Println("Running HeadshotHider")
 
 	w.ShowAndRun()
 }

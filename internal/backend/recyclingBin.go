@@ -2,6 +2,8 @@ package backend
 
 import (
 	"os/exec"
+
+	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 )
 
 /*
@@ -11,6 +13,10 @@ import (
 
 func RecyclingBin() error {
 	cmd := exec.Command("PowerShell", "-Command", "Clear-RecycleBin -Force")
-	cmd.Run()
+	err := cmd.Run()
+	if err != nil {
+		util.Logger.Println("Error emptying recycling bin:", err)
+		//return err
+	}
 	return nil
 }

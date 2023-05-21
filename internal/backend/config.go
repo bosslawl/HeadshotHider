@@ -6,10 +6,11 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 	"github.com/google/uuid"
 )
 
-func (c *Client) CopyConfig() {
+func (c *Client) CopyConfig() error {
 	config := UserHomeDir() + "\\AppData\\Local\\Packages\\StudioWildcard.4558480580BB9_1w2mm55455e38\\AC\\Temp\\HeadshotConfigs"
 	cpath, _ := ioutil.ReadDir(config)
 
@@ -20,6 +21,7 @@ func (c *Client) CopyConfig() {
 			CopyFile(source, destination)
 		}
 	}
+	return nil
 }
 
 func NewName() string {
@@ -49,14 +51,24 @@ func CopyFile(sourcePath, destinationPath string) error {
 	return nil
 }
 
-func DeleteConfig() {
+func DeleteConfig() error {
 	config := UserHomeDir() + "\\AppData\\Local\\Packages\\StudioWildcard.4558480580BB9_1w2mm55455e38\\AC\\Temp"
 	os.RemoveAll(config)
 	os.Mkdir(config, 0755)
+	return nil
 }
 
 func (c *Client) Config() error {
-	c.CopyConfig()
-	DeleteConfig()
+	err := c.CopyConfig()
+	if err != nil {
+		util.Logger.Println("Error copying config:", err)
+		return err
+	}
+
+	errr := DeleteConfig()
+	if errr != nil {
+		util.Logger.Println("Error deleting config:", errr)
+		return errr
+	}
 	return nil
 }
