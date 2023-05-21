@@ -145,8 +145,8 @@ func (r *run) buildUI() *container.Scroll {
 	)
 
 	miscBox := container.NewGridWithColumns(2,
-		newBoldLabel("You will still need to delete emails pervading to HS"),
-		newBoldLabel("You will still need to delete any sellix orders pervading to HS"),
+		newBoldLabel("- You will still need to delete emails pervading to HS"),
+		newBoldLabel("- You will still need to delete any sellix orders pervading to HS"),
 	)
 
 	return container.NewScroll(container.NewVBox(
