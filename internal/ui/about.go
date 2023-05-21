@@ -29,13 +29,13 @@ func (a *about) buildUI() *fyne.Container {
 	const (
 		https   = "https"
 		github  = "github.com"
-		version = "v2"
+		version = "v2.0.2"
 	)
 
 	repoURL := &url.URL{Scheme: https, Host: github, Path: "/bosslawl/HeadshotHider"}
 	a.icon = newClickableIcon(a.app.Icon(), repoURL, a.app)
 
-	a.nameLabel = newBoldLabel("Headshot Hider")
+	a.nameLabel = newBoldLabel("HeadshotHider")
 	a.spacerLabel = newBoldLabel("-")
 
 	releaseURL := &url.URL{

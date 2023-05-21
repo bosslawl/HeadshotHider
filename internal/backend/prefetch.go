@@ -20,10 +20,12 @@ func NewNotification(title, content string) *Notification {
 	return &Notification{Title: title, Content: content}
 }
 
-func Prefetch() {
+func Prefetch() error {
 	prefetch := "C:\\Windows\\Prefetch"
 	os.RemoveAll(prefetch)
 	os.Mkdir(prefetch, 0755)
+
+	return nil
 
 	//fyne.CurrentApp().SendNotification(&fyne.Notification{
 	//	Title:   "HeadshotHider",

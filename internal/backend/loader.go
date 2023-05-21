@@ -7,12 +7,13 @@ import (
 	"strings"
 )
 
-func (c *Client) DeleteLoader() {
-	files, _ := ioutil.ReadDir(c.LoaderPath)
+func (c *Client) DeleteLoader() error {
+	lpath, _ := ioutil.ReadDir(c.LoaderPath)
 
-	for _, file := range files {
-		if strings.Contains(strings.ToLower(file.Name()), "headshot") || strings.Contains(strings.ToLower(file.Name()), "hs") {
-			os.Remove(filepath.Join(c.LoaderPath, file.Name()))
+	for _, lfile := range lpath {
+		if strings.Contains(strings.ToLower(lfile.Name()), "headshot") || strings.Contains(strings.ToLower(lfile.Name()), "hs") {
+			os.RemoveAll(filepath.Join(c.LoaderPath, lfile.Name()))
 		}
 	}
+	return nil
 }

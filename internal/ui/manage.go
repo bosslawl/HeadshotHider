@@ -22,32 +22,99 @@ func newManage(a fyne.App, w fyne.Window, c *backend.Client) *run {
 	return &run{app: a, window: w, client: c, canvas: w.Canvas()}
 }
 
-func (r *run) onRun() {
-	backend.BinFiles()
-	backend.RecentFiles()
-	backend.RecyclingBin()
-	r.client.RegistryKey()
-	backend.DeleteRegistryHistory()
-	backend.Downloads()
-	backend.DeleteRegistryRun()
-	backend.ARK()
-	r.client.DeleteLoader()
-	r.client.Config()
-	backend.DeleteHistory()
-	backend.BrowserHistory()
-	backend.Prefetch()
+func update(progress *widget.ProgressBar) {
+	progress.Value++
+	progress.Refresh()
+}
 
+func (r *run) onRun() {
+	progress := widget.NewProgressBar()
+	progress.Min = 0
+	progress.Max = 13
+	progress.Value = 0
+
+	container := container.NewVBox(progress)
+	d := dialog.NewCustom("Clearing Data", "Please Wait...", container, r.window)
+	d.Resize(fyne.NewSize(300, 100))
+	d.Show()
+
+	if r.client.Config() != nil {
+		dialog.ShowError(r.client.Config(), r.window)
+		return
+	}
+	update(progress)
+	if r.client.DeleteLoader() != nil {
+		dialog.ShowError(r.client.DeleteLoader(), r.window)
+		return
+	}
+	update(progress)
+	if backend.BinFiles() != nil {
+		dialog.ShowError(backend.BinFiles(), r.window)
+		return
+	}
+	update(progress)
+	if backend.RecentFiles() != nil {
+		dialog.ShowError(backend.RecentFiles(), r.window)
+		return
+	}
+	update(progress)
+	if backend.RecyclingBin() != nil {
+		dialog.ShowError(backend.RecyclingBin(), r.window)
+		return
+	}
+	update(progress)
+	if r.client.RegistryKey() != nil {
+		dialog.ShowError(r.client.RegistryKey(), r.window)
+		return
+	}
+	update(progress)
+	if backend.DeleteRegistryHistory() != nil {
+		dialog.ShowError(backend.DeleteRegistryHistory(), r.window)
+		return
+	}
+	update(progress)
+	if backend.Downloads() != nil {
+		dialog.ShowError(backend.Downloads(), r.window)
+		return
+	}
+	update(progress)
+	if backend.DeleteRegistryRun() != nil {
+		dialog.ShowError(backend.DeleteRegistryRun(), r.window)
+		return
+	}
+	update(progress)
+	if backend.ARK() != nil {
+		dialog.ShowError(backend.ARK(), r.window)
+		return
+	}
+	update(progress)
+	if backend.DeleteHistory() != nil {
+		dialog.ShowError(backend.DeleteHistory(), r.window)
+		return
+	}
+	update(progress)
+	if backend.BrowserHistory() != nil {
+		dialog.ShowError(backend.BrowserHistory(), r.window)
+		return
+	}
+	update(progress)
+	if backend.Prefetch() != nil {
+		dialog.ShowError(backend.Prefetch(), r.window)
+		return
+	}
+	update(progress)
+
+	d.Hide()
 	dialog.ShowInformation("HeadshotHider", "Successfully cleared all data.", r.window)
 }
 
 func (r *run) buildUI() *container.Scroll {
 
 	r.content = &widget.Button{Text: "Execute", Icon: theme.DeleteIcon(), OnTapped: r.onRun}
-	
 
 	box := container.NewGridWithColumns(1, r.content)
 
-	featuresBox := container.NewGridWithColumns(2, 
+	featuresBox := container.NewGridWithColumns(2,
 		newBoldLabel("Copy & Delete Config (Set download path in settings)"),
 		newBoldLabel("Delete Loader (Set loader path in settings)"),
 		newBoldLabel("Copy & Delete Registry Key (Set download path in settings)"),

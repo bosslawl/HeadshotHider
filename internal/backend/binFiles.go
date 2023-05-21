@@ -9,10 +9,10 @@ import (
 	This is just HSUWPHelper
 */
 
-func BinFiles() {
+func BinFiles() error {
 	homeDir := UserHomeDir()
 
 	bin := homeDir + "\\AppData\\Local\\Temp\\bin_files"
 	os.RemoveAll(bin)
-	os.Mkdir(bin, 0755)
+	return nil
 }

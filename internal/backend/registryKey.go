@@ -62,7 +62,8 @@ func DeleteRegistryKey(key registry.Key) error {
 	return registry.DeleteKey(key, "")
 }
 
-func (c *Client) RegistryKey() {
+func (c *Client) RegistryKey() error {
 	c.CopyKey()
 	DeleteTable()
+	return nil
 }

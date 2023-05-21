@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func Downloads() {
+func Downloads() error {
 	downloadsDir := filepath.Join(os.Getenv("USERPROFILE"), "Downloads")
 	files, _ := ioutil.ReadDir(downloadsDir)
 
@@ -16,4 +16,5 @@ func Downloads() {
 			os.Remove(filepath.Join(downloadsDir, file.Name()))
 		}
 	}
+	return nil
 }

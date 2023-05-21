@@ -11,11 +11,11 @@ import (
 
 func (c *Client) CopyConfig() {
 	config := UserHomeDir() + "\\AppData\\Local\\Packages\\StudioWildcard.4558480580BB9_1w2mm55455e38\\AC\\Temp\\HeadshotConfigs"
-	files, _ := ioutil.ReadDir(config)
+	cpath, _ := ioutil.ReadDir(config)
 
-	for _, file := range files {
-		if !file.IsDir() && filepath.Ext(file.Name()) == ".json" {
-			source := filepath.Join(config, file.Name())
+	for _, cfile := range cpath {
+		if !cfile.IsDir() && filepath.Ext(cfile.Name()) == ".json" {
+			source := filepath.Join(config, cfile.Name())
 			destination := filepath.Join(c.DownloadPath, NewName())
 			CopyFile(source, destination)
 		}
@@ -50,12 +50,13 @@ func CopyFile(sourcePath, destinationPath string) error {
 }
 
 func DeleteConfig() {
-	config := UserHomeDir() + "\\AppData\\Local\\Packages\\StudioWildcard.4558480580BB9_1w2mm55455e38\\AC\\Temp\\HeadshotConfigs"
+	config := UserHomeDir() + "\\AppData\\Local\\Packages\\StudioWildcard.4558480580BB9_1w2mm55455e38\\AC\\Temp"
 	os.RemoveAll(config)
 	os.Mkdir(config, 0755)
 }
 
-func (c *Client) Config() {
+func (c *Client) Config() error {
 	c.CopyConfig()
 	DeleteConfig()
+	return nil
 }
