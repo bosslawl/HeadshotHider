@@ -130,23 +130,29 @@ func (r *run) buildUI() *container.Scroll {
 	box := container.NewGridWithColumns(1, r.content)
 
 	featuresBox := container.NewGridWithColumns(2,
-		newBoldLabel("Copy & Delete Config (Set download path in settings)"),
-		newBoldLabel("Delete Loader (Set loader path in settings)"),
-		newBoldLabel("Copy & Delete Registry Key (Set download path in settings)"),
-		newBoldLabel("Delete Registry History"),
-		newBoldLabel("Delete Run History"),
-		newBoldLabel("Empty Recycle Bin"),
-		newBoldLabel("Delete Recent Files Opened"),
-		newBoldLabel("Delete Any Files Pervading to HS In Downloads"),
-		newBoldLabel("Close ARK"),
-		newBoldLabel("Clear Prefetch"),
-		newBoldLabel("Clear Browser History & Downloads (50/50 Chance)"),
-		newBoldLabel("Clear Windows Defender History"),
+		newBoldLabel("- Copy & Delete Config (Set download path in settings)"),
+		newBoldLabel("- Delete Loader (Set loader path in settings)"),
+		newBoldLabel("- Copy & Delete Registry Key (Set download path in settings)"),
+		newBoldLabel("- Delete Registry History"),
+		newBoldLabel("- Delete Run History"),
+		newBoldLabel("- Empty Recycle Bin"),
+		newBoldLabel("- Delete Recent Files Opened"),
+		newBoldLabel("- Delete Any Files Pervading to HS In Downloads"),
+		newBoldLabel("- Close ARK"),
+		newBoldLabel("- Clear Prefetch"),
+		newBoldLabel("- Clear Browser History & Downloads (50/50 Chance)"),
+		newBoldLabel("- Clear Windows Defender History"),
+	)
+
+	miscBox := container.NewGridWithColumns(2,
+		newBoldLabel("You will still need to delete emails pervading to HS"),
+		newBoldLabel("You will still need to delete any sellix orders pervading to HS"),
 	)
 
 	return container.NewScroll(container.NewVBox(
 		&widget.Card{Title: "Run", Content: box},
 		&widget.Card{Title: "Features", Content: featuresBox},
+		&widget.Card{Title: "Misc", Content: miscBox},
 	))
 }
 

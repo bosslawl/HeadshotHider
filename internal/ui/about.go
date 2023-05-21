@@ -29,7 +29,7 @@ func (a *about) buildUI() *fyne.Container {
 	const (
 		https   = "https"
 		github  = "github.com"
-		version = "v2.0.3"
+		version = "v2.0.4"
 	)
 
 	repoURL := &url.URL{Scheme: https, Host: github, Path: "/bosslawl/HeadshotHider"}
@@ -55,6 +55,7 @@ func (a *about) buildUI() *fyne.Container {
 			a.hyperlink,
 			spacer,
 		),
+		container.NewHBox(spacer, newBoldLabel("by boss <3"), spacer),
 		spacer,
 	)
 }

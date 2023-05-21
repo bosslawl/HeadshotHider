@@ -49,7 +49,7 @@ func main() {
 	w := a.NewWindow("HeadshotHider")
 
 	w.SetContent(ui.Create(a, w))
-	w.Resize(fyne.NewSize(850, 500))
+	w.Resize(fyne.NewSize(875, 500))
 	w.SetMaster()
 	util.Logger.Println("Running HeadshotHider")
 
