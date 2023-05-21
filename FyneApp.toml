@@ -4,5 +4,5 @@ Website = "https://headshot.su/"
   Icon = "internal/assets/icon/icon-512.png"
   Name = "HeadshotHider"
   ID = "io.github.bosslawl.headshothider"
-  Version = "2.0.0"
+  Version = "2.0.3"
   Build = 24
