@@ -154,6 +154,8 @@ func (r *run) buildUI() *container.Scroll {
 		newBoldLabel("- Clear Prefetch"),
 		newBoldLabel("- Clear Browser History & Downloads (50/50 Chance)"),
 		newBoldLabel("- Clear Windows Defender History"),
+		newBoldLabel("- Clear Windows Crash Dumps"),
+		newBoldLabel("- Clear Windows Dump Reports"),
 	)
 
 	miscBox := container.NewGridWithColumns(2,

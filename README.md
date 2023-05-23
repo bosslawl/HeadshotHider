@@ -28,7 +28,9 @@ If you like the project leave it a star :)
 - Clear registry process history
 - Delete & copy your headshot key
 - Delete run history
-- Delete windows defender history \
+- Delete windows defender history 
+- Clear windows crash dump
+- Clear windows crash reports \
 *Note: Browser history deletion is a 50/50 due to windows issues*
 
 ## Getting Started
