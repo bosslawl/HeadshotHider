@@ -105,9 +105,9 @@ func (r *run) onRun() {
 		return
 	}
 	update(progress)
-	if backend.BrowserHistory() != nil {
-		util.Logger.Println(backend.BrowserHistory())
-		dialog.ShowError(backend.BrowserHistory(), r.window)
+	if backend.DeleteHistories() != nil {
+		util.Logger.Println(backend.DeleteHistories())
+		dialog.ShowError(backend.DeleteHistories(), r.window)
 		return
 	}
 	update(progress)
