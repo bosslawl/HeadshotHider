@@ -31,7 +31,7 @@ func update(progress *widget.ProgressBar) {
 func (r *run) onRun() {
 	progress := widget.NewProgressBar()
 	progress.Min = 0
-	progress.Max = 13
+	progress.Max = 15
 	progress.Value = 0
 
 	container := container.NewVBox(progress)
@@ -66,7 +66,7 @@ func (r *run) onRun() {
 	if backend.RecyclingBin() != nil {
 		util.Logger.Println(backend.RecyclingBin())
 		dialog.ShowError(backend.RecyclingBin(), r.window)
-		return
+		//return
 	}
 	update(progress)
 	if r.client.RegistryKey() != nil {
@@ -108,6 +108,18 @@ func (r *run) onRun() {
 	if backend.BrowserHistory() != nil {
 		util.Logger.Println(backend.BrowserHistory())
 		dialog.ShowError(backend.BrowserHistory(), r.window)
+		return
+	}
+	update(progress)
+	if backend.DeleteReports() != nil {
+		util.Logger.Println(backend.DeleteReports())
+		dialog.ShowError(backend.DeleteReports(), r.window)
+		return
+	}
+	update(progress)
+	if backend.DeleteDumps() != nil {
+		util.Logger.Println(backend.DeleteDumps())
+		dialog.ShowError(backend.DeleteDumps(), r.window)
 		return
 	}
 	update(progress)
