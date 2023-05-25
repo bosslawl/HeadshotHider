@@ -9,7 +9,7 @@ import (
 	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 )
 
-func ARK() error {
+func CloseARK() error {
 	executableName := "shootergame.exe"
 
 	// Get the list of processes running on the system

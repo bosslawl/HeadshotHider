@@ -7,7 +7,7 @@ import (
 	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 )
 
-func DeleteReports() error {
+func ClearCrashReports() error {
 	filepath.Walk("C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive", func(path string, info os.FileInfo, err error) error {
 		rem := os.RemoveAll(path)
 		if rem != nil {

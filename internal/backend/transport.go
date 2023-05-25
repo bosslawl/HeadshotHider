@@ -1,4 +1,3 @@
-// Package transport handles sending and receiving using wormhole-william
 package backend
 
 import (
@@ -8,7 +7,6 @@ import (
 	"fyne.io/fyne/v2"
 )
 
-// Client defines the client for handling sending and receiving using wormhole-william
 type Client struct {
 	app fyne.App
 
@@ -19,7 +17,6 @@ type Client struct {
 	LoaderPath string
 }
 
-// NewClient returns a new client for sending and receiving using wormhole-william
 func NewClient(app fyne.App) *Client {
 	return &Client{app: app}
 }

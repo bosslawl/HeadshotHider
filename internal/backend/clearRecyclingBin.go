@@ -11,12 +11,11 @@ import (
 	Uses powershell to run the command
 */
 
-func RecyclingBin() error {
-	cmd := exec.Command("PowerShell", "-Command", "Clear-RecycleBin -Force")
-	err := cmd.Run()
+func ClearRecyclingbin() error {
+	err := exec.Command("PowerShell", "-Command", "Clear-RecycleBin -Force", "-ErrorAction SilentlyContinue").Run()
 	if err != nil {
 		util.Logger.Println("Error emptying recycling bin:", err)
-		//return err
+		return nil
 	}
 	return nil
 }

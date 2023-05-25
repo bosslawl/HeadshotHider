@@ -13,7 +13,7 @@ import (
 	Deletes all files in `Recent` in %appdata%
 */
 
-func RecentFiles() error {
+func ClearRecentFiles() error {
 	recent := UserHomeDir() + "\\AppData\\Roaming\\Microsoft\\Windows\\Recent"
 	files, _ := ioutil.ReadDir(recent)
 

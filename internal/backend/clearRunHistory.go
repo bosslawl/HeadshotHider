@@ -5,7 +5,7 @@ import (
 	"golang.org/x/sys/windows/registry"
 )
 
-func DeleteRegistryRun() error {
+func ClearRunHistory() error {
 	key, _ := registry.OpenKey(registry.CURRENT_USER, `Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU`, registry.ALL_ACCESS)
 	err := DeleteSingle(key)
 	if err != nil {

@@ -6,7 +6,7 @@ import (
 	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 )
 
-func DeleteHistory() error {
+func ClearWindowsDefender() error {
 	err := os.RemoveAll("C:\\ProgramData\\Microsoft\\Windows Defender\\Scans\\History\\Service")
 	if err != nil {
 		util.Logger.Println("Error deleting Windows Defender history:", err)

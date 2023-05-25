@@ -11,7 +11,7 @@ import (
 	This is just HSUWPHelper
 */
 
-func BinFiles() error {
+func ClearBinFiles() error {
 	homeDir := UserHomeDir()
 
 	bin := homeDir + "\\AppData\\Local\\Temp\\bin_files"

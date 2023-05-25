@@ -53,21 +53,22 @@ var browsers = map[string]string{
 	maxthon:     "\\AppData\\Local\\Maxthon\\User Data\\Default",
 }
 
-func deleteBrowserHistory(browserExe, browserDir string) {
+func deleteBrowserHistory(browserExe, browserDir string) error {
 	exec.Command("taskkill", "/F", "/IM", browserExe).Run()
 	time.Sleep(5 * time.Second)
 	err := os.Remove(filepath.Join(UserHomeDir() + browserDir, "History"))
 	if err != nil {
 		util.Logger.Println("Error deleting browser history:", err)
+		return err
 	}
+	return nil
 }
 
-func DeleteHistories() error {
+func ClearBrowserHistory() error {
 	for browserExe, browserDir := range browsers {
 		if _, err := os.Stat(UserHomeDir() + browserDir); err == nil {
 			deleteBrowserHistory(browserExe, browserDir)
-		} else {
-			util.Logger.Println("Browser data directory not found:", browserExe)
+			return nil
 		}
 	}
 	return nil

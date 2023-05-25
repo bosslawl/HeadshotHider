@@ -15,7 +15,7 @@ import (
 	I have tried disabling prefetch via registry but it still logs
 */
 
-func Prefetch() error {
+func ClearPrefetch() error {
 	prefetch := "C:\\Windows\\Prefetch"
 	files, _ := ioutil.ReadDir(prefetch)
 

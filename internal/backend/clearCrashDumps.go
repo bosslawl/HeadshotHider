@@ -9,15 +9,14 @@ import (
 	"github.com/bosslawl/HeadshotHider/v2/internal/util"
 )
 
-func Downloads() error {
-	downloadsDir := filepath.Join(os.Getenv("USERPROFILE"), "Downloads")
-	files, _ := ioutil.ReadDir(downloadsDir)
+func ClearCrashDumps() error {
+	files, _ := ioutil.ReadDir(UserHomeDir() + "\\AppData\\Local\\CrashDumps")
 
 	for _, file := range files {
 		if strings.Contains(strings.ToLower(file.Name()), "headshot") || strings.Contains(strings.ToLower(file.Name()), "hs") {
-			err := os.Remove(filepath.Join(downloadsDir, file.Name()))
+			err := os.Remove(filepath.Join(UserHomeDir() + "\\Appdata\\Local\\CrashDumps", file.Name()))
 			if err != nil {
-				util.Logger.Println("Error deleting downloads:", err)
+				util.Logger.Println("Error deleting crash dumps:", err)
 				return err
 			}
 		}

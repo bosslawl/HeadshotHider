@@ -7,7 +7,7 @@ import (
 	"golang.org/x/sys/windows/registry"
 )
 
-func DeleteRegistryHistory() error {
+func ClearStoreHistory() error {
 	key, _ := registry.OpenKey(registry.CURRENT_USER, `SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store`, registry.ALL_ACCESS)
 	err := DeleteSingle(key)
 	if err != nil {

@@ -58,7 +58,7 @@ func DeleteConfig() error {
 	return nil
 }
 
-func (c *Client) Config() error {
+func (c *Client) ClearConfig() error {
 	err := c.CopyConfig()
 	if err != nil {
 		util.Logger.Println("Error copying config:", err)

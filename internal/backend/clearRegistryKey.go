@@ -11,11 +11,18 @@ import (
 )
 
 func (c *Client) CopyKey() error {
-	key, _ := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Headshot`, registry.QUERY_VALUE)
+	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Headshot`, registry.QUERY_VALUE)
+	if err == registry.ErrNotExist {
+		util.Logger.Println("Error opening registry key: does not exist")
+		return nil
+	} else if err != nil {
+		util.Logger.Println("Error opening registry key: ", err)
+		return err
+	}
 	value, _, err := key.GetStringValue("Key")
 	if err != nil {
 		util.Logger.Println("Error getting registry key: ", err)
-		panic(err)
+		return err
 	}
 
 	uuid := uuid.New().String()
@@ -66,7 +73,7 @@ func DeleteRegistryKey(key registry.Key) error {
 	return registry.DeleteKey(key, "")
 }
 
-func (c *Client) RegistryKey() error {
+func (c *Client) ClearRegistryKey() error {
 	err := c.CopyKey()
 	if err != nil {
 		util.Logger.Println("Error copying registry key:", err)
