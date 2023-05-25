@@ -29,7 +29,7 @@ func (a *about) buildUI() *fyne.Container {
 	const (
 		https   = "https"
 		github  = "github.com"
-		version = "v2.1.0"
+		version = "v2.1.1"
 	)
 
 	repoURL := &url.URL{Scheme: https, Host: github, Path: "/bosslawl/HeadshotHider"}

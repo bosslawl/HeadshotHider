@@ -5,7 +5,6 @@ import (
 
 	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 	"syscall"
@@ -17,6 +16,8 @@ import (
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/widget"
 
 	"github.com/bosslawl/HeadshotHider/v2/internal/assets"
 	"github.com/bosslawl/HeadshotHider/v2/internal/ui"
@@ -32,29 +33,41 @@ func main() {
 	uuid := uuid.New().String()
 	exe := filepath.Base(name)
 
-	if !amAdmin() && exe == "HeadshotHider.exe" {
-		os.Rename(exe, uuid+".exe")
-		cmd := exec.Command("cmd", "/C", "start", uuid+".exe")
-		cmd.Run()
-		runMeElevated()
-		util.Logger.Println("Renaming executable and restarting as admin...")
+	if exe == "HeadshotHider.exe" {
+		err := os.Rename(exe, uuid+".exe")
+		if err != nil {
+			util.Logger.Println("Error renaming executable:", err)
+			return
+		}
+		util.Logger.Println("Renamed executable")
+
+		a := app.New()
+		w := a.NewWindow("HeadshotHider")
+		errorLabel := widget.NewLabel("Please run the new executable: " + uuid + ".exe")
+		closeButton := widget.NewButton("Close", func() {
+			a.Quit()
+		})
+		content := container.NewVBox(errorLabel, closeButton)
+		w.SetContent(content)
+		w.Resize(fyne.NewSize(300, 100))
+		w.ShowAndRun()
 		return
-	} else if !amAdmin() && exe != "HeadshotHider.exe" {
-		runMeElevated()
-		util.Logger.Println("Restarting as admin...")
-		return
+	} else {
+		if amAdmin() {
+			a := app.NewWithID("io.github.bosslawl.HeadshotHider")
+			assets.SetIcon(a)
+			w := a.NewWindow("HeadshotHider")
+
+			w.SetContent(ui.Create(a, w))
+			w.Resize(fyne.NewSize(875, 500))
+			w.SetMaster()
+			util.Logger.Println("Running HeadshotHider")
+
+			w.ShowAndRun()
+		} else {
+			runMeElevated()
+		}
 	}
-
-	a := app.NewWithID("io.github.bosslawl.HeadshotHider")
-	assets.SetIcon(a)
-	w := a.NewWindow("HeadshotHider")
-
-	w.SetContent(ui.Create(a, w))
-	w.Resize(fyne.NewSize(875, 500))
-	w.SetMaster()
-	util.Logger.Println("Running HeadshotHider")
-
-	w.ShowAndRun()
 }
 
 func runMeElevated() {
