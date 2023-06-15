@@ -36,7 +36,7 @@ If you like the project leave it a star :)
 ## Getting Started
 
 Head over to the releases page on this github repostory and download the 
-most recent version. **RENAME THE APPLICATION A NEW NAME** Launch the application and give it admin and have fun!
+most recent version. 
 
 ## FAQ
 
