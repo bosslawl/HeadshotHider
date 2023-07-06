@@ -50,7 +50,7 @@ most recent version.
 
 - How do I get support?
 
-    Message boss.#7181 on discord.
+    Message bosslawl#0 on discord.
 
 ## Contributors
 
