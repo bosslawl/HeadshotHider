@@ -10,7 +10,7 @@
 ## Introduction
 
 HeadshotHider deletes almost all files and data pervading to https://headshot.su/ \
-If you like the project leave it a star :3
+If you like the project leave it a star :3 \
 *Restore isn't done.*
 
 ## Features
@@ -30,6 +30,7 @@ If you like the project leave it a star :3
 	- Clear windows defender history
 	- Clear windows crash dumps
 	- Clear windows crash reports
+        - Clear user assist view
 - Restore
 	- Restore your headshot loader
 	- Restore your headshot config & key
