@@ -1,8 +1,6 @@
-Website = "https://headshot.su/"
-
 [Details]
-  Icon = "internal/assets/icon/icon-512.png"
-  Name = "HeadshotHider"
-  ID = "io.github.bosslawl.headshothider"
-  Version = "2.1.2"
-  Build = 24
+    Icon = "core/assets/icon/icon-512.png"
+    Name = "HeadshotHider"
+    ID = "bosslawl.headshothider"
+    Author = "bosslawl"
+    Description = "Hides all files pervading to headshot.su"

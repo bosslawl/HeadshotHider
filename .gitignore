@@ -20,7 +20,7 @@ fyne-cross/
 *.out
 
 # Dependency directories (remove the comment below to include it)
-# vendor/
+vendor/
 
 # Flatpak related information
 build-dir/
