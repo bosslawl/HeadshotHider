@@ -30,7 +30,7 @@ If you like the project leave it a star :3 \
 	- Clear windows defender history
 	- Clear windows crash dumps
 	- Clear windows crash reports
-        - Clear user assist view
+   	- Clear user assist view
 - Restore
 	- Restore your headshot loader
 	- Restore your headshot config & key
